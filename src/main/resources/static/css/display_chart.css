@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+*{
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000000;
+}
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  padding: 0px 10px;
+}

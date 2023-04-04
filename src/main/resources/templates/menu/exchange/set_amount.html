@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Set amount</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/slider.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/slider.css">
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/glowing_button.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/glowing_button.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/table.css">
+    <link rel="stylesheet" type="text/css" href="/css/captions.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/captions.css">
+    <link rel="stylesheet" type="text/css" href="/css/hidden.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/hidden.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <ul>
+        <li><a href="/menu/internal"><i class="fas fa-address-book"></i>Internal Account</a></li>
+        <li><a href="/menu/external"><i class="far fa-address-book"></i>External Account</a></li>
+        <li><a href="/menu/available"><i class="far fa-money-bill-alt"></i>Available Coins</a></li>
+        <li><a href="/menu/exchange"><i class="fas fa-exchange-alt"></i>Exchange</a></li>
+        <li><a href="/menu/transactions"><i class="fas fa-link"></i>Transactions</a></li>
+        <li><a href="/menu/charts"><i class="fas fa-chart-line"></i>Charts</a></li>
+        <li><a href="/menu/alerts"><i class="fa fa-bell"></i>Alerts</a></li>
+        <li><a href="/menu/info"><i class="far fa-question-circle"></i>Info</a></li>
+        <li><a href="/logout" method="post"><i class="fa fa-power-off"></i>Log out</a></li>
+    </ul>
+</div>
+<br>
+<div class="main">
+    <div id="hid" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CONFIRM TRANSACTION</h3>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+                <p>are You sure to proceed transaction?</p>
+            </div>
+            <button id="confirm" onclick="confirmTransaction()">confirm</button>
+            <div class="modal-footer">
+                <br>
+            </div>
+        </div>
+    </div>
+    <p>available amount of (userCoin): <span id="ucSymbol" th:text="${currentTransaction.userCoin}"></span></p>
+    <p>is: <span th:text="${userCoin.amount}"></span></p>
+    <br>
+    <p>current price of (exCoin): <span id="ecSymbol" th:text="${currentTransaction.coinToExchange}"></span></p>
+    <p>is: <span th:text="${coinToExchange.price}"></span></p>
+    <br>
+    <div class="slidecontainer">
+        <input step="0.01" type="range" min="0" value="0" class="slider" id="range">
+        <p>amount: <span id="amount"></span></p>
+        <p>in usdt: <span id="inUsdt"></span></p>
+        <p>after exchange: <span id="after"></span></p>
+    </div>
+    <br><br>
+    <button onclick="showConfirmation()">exchange by market price</button>
+    <form id="next_page" th:action="@{/menu/transactions}" method="get">
+    </form>
+</div>
+</body>
+<script th:inline="javascript">
+var maxAmount = [[${userCoin.amount}]];
+var userCoin = [[${currentTransaction.userCoin}]];
+var coinToExchange = [[${currentTransaction.coinToExchange}]];
+var ucPrice = [[${userCoin.price}]];
+var ctePrice = [[${coinToExchange.price}]];
+</script>
+<script src="/js/set_amount.js">
+</script>
+</html>

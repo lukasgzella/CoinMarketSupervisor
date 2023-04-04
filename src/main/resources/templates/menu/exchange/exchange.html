@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Exchange</title>
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/glowing_button.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/glowing_button.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/table.css">
+    <link rel="stylesheet" type="text/css" href="/css/captions.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/captions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="/js/exchange.js"></script>
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <ul>
+        <li><a href="/menu/internal"><i class="fas fa-address-book"></i>Internal Account</a></li>
+        <li><a href="/menu/external"><i class="far fa-address-book"></i>External Account</a></li>
+        <li><a href="/menu/available"><i class="far fa-money-bill-alt"></i>Available Coins</a></li>
+        <li><a href="/menu/exchange"><i class="fas fa-exchange-alt"></i>Exchange</a></li>
+        <li><a href="/menu/transactions"><i class="fas fa-link"></i>Transactions</a></li>
+        <li><a href="/menu/charts"><i class="fas fa-chart-line"></i>Charts</a></li>
+        <li><a href="/menu/alerts"><i class="fa fa-bell"></i>Alerts</a></li>
+        <li><a href="/menu/info"><i class="far fa-question-circle"></i>Info</a></li>
+        <li><a href="/logout" method="post"><i class="fa fa-power-off"></i>Log out</a></li>
+    </ul>
+</div>
+<br>
+<div class="main">
+    <div class="row">
+        <div class="column">
+            <table>
+                <caption>
+                    <form>
+                        <label for="user_coin">Choose your coin:</label>
+                        <select id="user_coin" onChange="dispUc(this);" name="ins">
+                            <option></option>
+                            <option th:each="in : ${ins}"><span th:text="${in.coin.symbol}"></span></option>
+                        </select>
+                    </form>
+                </caption>
+                <thead>
+                <tr>
+                    <th style="width: 10%"> sym </th>
+                    <th style="width: 15%"> label </th>
+                    <th style="width: 15%"> amount </th>
+                    <th style="width: 15%"> price </th>
+                    <th style="width: 15%"> value </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="in : ${ins}">
+                    <td><span th:text="${in.coin.symbol}"></span></td>
+                    <td><span th:text="${in.coin.label}"></span></td>
+                    <td><span th:text="${in.amount}"></span></td>
+                    <td><span th:text="${in.price}"></span></td>
+                    <td><span th:text="${in.value}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="column">
+            <table>
+                <caption>
+                    <form id="submitnext" th:action="@{/menu/exchange/set-amount}" method="get">
+                        <label for="ex_coin">Choose coin to:</label>
+                        <select id="ex_coin" onChange="dispEc(this);" name="entries">
+                            <option></option>
+                            <option th:each="entry : ${entries}"><span th:text="${entry.coin.symbol}"></span></option>
+                        </select>
+                    </form>
+                </caption>
+                <thead>
+                <tr>
+                    <th style="width: 15%"> symbol </th>
+                    <th style="width: 15%"> label </th>
+                    <th style="width: 15%"> price </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="entry : ${entries}">
+                    <td><span th:text="${entry.coin.symbol}"></span></td>
+                    <td><span th:text="${entry.coin.label}"></span></td>
+                    <td><span th:text="${entry.price}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+      <button onclick="send()">NEXT</button>
+    </div>
+</body>
+</html>

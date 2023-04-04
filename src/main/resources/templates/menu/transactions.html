@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>Available</title>
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/main_available.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/main_available.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <ul>
+        <li><a href="/menu/internal"><i class="fas fa-address-book"></i>Internal Account</a></li>
+        <li><a href="/menu/external"><i class="far fa-address-book"></i>External Account</a></li>
+        <li><a href="/menu/available"><i class="far fa-money-bill-alt"></i>Available Coins</a></li>
+        <li><a href="/menu/exchange"><i class="fas fa-exchange-alt"></i>Exchange</a></li>
+        <li><a href="/menu/transactions"><i class="fas fa-link"></i>Transactions</a></li>
+        <li><a href="/menu/charts"><i class="fas fa-chart-line"></i>Charts</a></li>
+        <li><a href="/menu/alerts"><i class="fa fa-bell"></i>Alerts</a></li>
+        <li><a href="/menu/info"><i class="far fa-question-circle"></i>Info</a></li>
+        <li><a href="/logout" method="post"><i class="fa fa-power-off"></i>Log out</a></li>
+    </ul>
+</div>
+<br>
+<div class="main">
+    <br>
+    <table>
+        <caption>Transactions history<br><br><br></caption>
+        <thead>
+        <tr>
+            <th style="width: 25%">date</th>
+            <th style="width: 10%">from coin</th>
+            <th style="width: 10%">price</th>
+            <th style="width: 13%">amount</th>
+            <th style="width: 7%">to coin</th>
+            <th style="width: 13%">price</th>
+            <th style="width: 10%">amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry : ${entries}">
+            <td><span th:text="${entry.timeStamp}"> date </span></td>
+            <td><span th:text="${entry.userCoin}"> user's coin </span></td>
+            <td><span th:text="${entry.ucPrice}"> price </span></td>
+            <td><span th:text="${entry.amountUcToExchange}"> amount </span></td>
+            <td><span th:text="${entry.coinToExchange}"> exchanged coin </span></td>
+            <td><span th:text="${entry.ctePrice}"> price </span></td>
+            <td><span th:text="${entry.amountCteAfterExchange}"> amount </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+</div>
+</body>
+</html>

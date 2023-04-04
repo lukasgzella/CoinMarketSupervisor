@@ -1,0 +1,29 @@
+.* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  margin-left:-5px;
+  margin-right:-5px;
+}
+
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+th,
+td {
+  padding: 5px;
+}
+thead{
+  background: url(images/table_background.jpg);
+  color: white;
+}

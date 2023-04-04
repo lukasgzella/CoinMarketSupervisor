@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="/css/help.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/help.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <ul>
+        <li><a href="/menu/internal"><i class="fas fa-address-book"></i>Internal Account</a></li>
+        <li><a href="/menu/external"><i class="far fa-address-book"></i>External Account</a></li>
+        <li><a href="/menu/available"><i class="far fa-money-bill-alt"></i>Available Coins</a></li>
+        <li><a href="/menu/exchange"><i class="fas fa-exchange-alt"></i>Exchange</a></li>
+        <li><a href="/menu/transactions"><i class="fas fa-link"></i>Transactions</a></li>
+        <li><a href="/menu/charts"><i class="fas fa-chart-line"></i>Charts</a></li>
+        <li><a href="/menu/alerts"><i class="fa fa-bell"></i>Alerts</a></li>
+        <li><a href="/menu/info"><i class="far fa-question-circle"></i>Info</a></li>
+        <li><a href="/logout" method="post"><i class="fa fa-power-off"></i>Log out</a></li>
+    </ul>
+</div>
+<br>
+<div class="main">
+    <p style="text-align:justify"> This application was build for educational purposes.
+        It contains key concepts of object-oriented programming and layer structured application,
+        which I have been learning since my first adventure with programming.
+        The idea was to build some simple backend app,
+        which contains such options like cryptocurrency wallet or displaying market charts.
+        However, in this state of application,
+        there is nothing to do with blockchain technology,
+        but it can be expanded in future by adding some options.
+        CoinMarketSupervisor simulate private crypto wallet with ability to:
+        - create users,
+        - transfer funds from external account,
+        - exchange funds to 12 popular cryptocurrencies and exchange beetween them,
+        - track transactions history,
+        - display live charts in 16 intervals,
+        - send alerts to Discord bot (Currently under construction).
+
+        Languages, frameworks and external libraries used in project:
+
+        Java 15, Javascript, HTML, CSS, Gradle, Spring Data JPA, Spring Security, Spring WebFlux, Thymeleaf, Mockito, JUnit, H2DataBase, IOSocket, Java Discord Api, Binance Connector, Eclipse Jetty Websocket Server.
+    </p>
+</div>
+</body>
+</html>

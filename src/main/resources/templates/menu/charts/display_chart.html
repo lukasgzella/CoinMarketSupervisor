@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>Chart</title>
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/display_chart.css">
+    <link rel="stylesheet" type="text/css" href="/resources/static/css/display_chart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <ul>
+        <li><a href="/menu/internal"><i class="fas fa-address-book"></i>Internal Account</a></li>
+        <li><a href="/menu/external"><i class="far fa-address-book"></i>External Account</a></li>
+        <li><a href="/menu/available"><i class="far fa-money-bill-alt"></i>Available Coins</a></li>
+        <li><a href="/menu/exchange"><i class="fas fa-exchange-alt"></i>Exchange</a></li>
+        <li><a href="/menu/transactions"><i class="fas fa-link"></i>Transactions</a></li>
+        <li><a href="/menu/charts"><i class="fas fa-chart-line"></i>Charts</a></li>
+        <li><a href="/menu/alerts"><i class="fa fa-bell"></i>Alerts</a></li>
+        <li><a href="/menu/info"><i class="far fa-question-circle"></i>Info</a></li>
+        <li><a href="/logout" method="post"><i class="fa fa-power-off"></i>Log out</a></li>
+    </ul>
+</div>
+<div class="main">
+    <h2><span th:text="${details.coinSymbol}"></span>USDT <span th:text="${details.interval}"></span>Chart</h2>
+    <div id="tvchart"></div>
+</div>
+</body>
+<script th:inline="javascript">
+var symbol = [[${details.coinSymbol}]];
+var interval = [[${details.interval}]];
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<script type="text/javascript" src="display_chart.js"></script>
+<script type="text/javascript" src="/js/display_chart.js"></script>
+</html>
