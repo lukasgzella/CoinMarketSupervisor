@@ -20,7 +20,7 @@ Languages, frameworks and external libraries used in project:
 
 Java 15, 
 Javascript, 
-HTML, 
+HTML, porządny
 CSS, 
 Gradle, 
 Spring Data JPA, 
@@ -34,6 +34,9 @@ IOSocket,
 Java Discord Api,
 Binance Connector,
 Eclipse Jetty Websocket Server.
+
+Here is some screenshots while program is running:
+[Contribution guidelines for this project](src/main/resources/screenshots/1.jpg)
 
 Currently I'm working on discord alerts. Application conects to Discord Bot (package utils.DiscordUtils,
 credentials are not visible for obvious reasons), but there is no user interface to set alerts.
