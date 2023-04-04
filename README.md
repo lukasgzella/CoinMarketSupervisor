@@ -36,7 +36,7 @@ Binance Connector,
 Eclipse Jetty Websocket Server.
 
 Here is some screenshots while program is running:
-[1](src/main/resources/screenshots/1.jpg)
+![1](src/main/resources/screenshots/1.jpg)
 [2](src/main/resources/screenshots/2.jpg)
 [3](src/main/resources/screenshots/3.jpg)
 [4](src/main/resources/screenshots/4.jpg)
