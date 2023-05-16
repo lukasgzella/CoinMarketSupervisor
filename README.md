@@ -20,7 +20,7 @@ Languages, frameworks and external libraries used in project:
 
 Java 15, 
 Javascript, 
-HTML, porządny
+HTML,
 CSS, 
 Gradle, 
 Spring Data JPA, 
