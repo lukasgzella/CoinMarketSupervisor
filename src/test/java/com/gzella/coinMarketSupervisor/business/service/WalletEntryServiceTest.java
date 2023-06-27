@@ -89,7 +89,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getInternalAccount_userWithoutWalletEntries_returnedInternalAccount() {
+    public void getInternalAccount_userWithoutWalletEntries_returnInternalAccount() {
         //given
         User authenticatedUser = initUser();
         when(securityService.getAuthenticatedUser()).thenReturn(authenticatedUser);
@@ -102,7 +102,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getInternalAccount_userWithWalletEntries_returnedInternalAccount() {
+    public void getInternalAccount_userWithWalletEntries_returnInternalAccount() {
         //given
         User authenticatedUser = initUser();
         List<WalletEntry> entries = initEntries(authenticatedUser);
@@ -120,7 +120,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getExternalAccount_allParamsOk_returnedExternalAccount() {
+    public void getExternalAccount_allParamsOk_returnExternalAccount() {
         //given
         User authenticatedUser = initUser();
         when(securityService.getAuthenticatedUser()).thenReturn(authenticatedUser);
@@ -133,7 +133,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getAvailableCoins_returnedAvailableCoins() {
+    public void getAvailableCoins_returnAvailableCoins() {
         //given
         List<WalletEntryDTO> expectedAvailableCoins = Stream.of(Coin.values())
                 .map(coin -> walletEntryToDTOMapper.apply(coin))
@@ -145,7 +145,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getSelectedAvailableCoin_selectedBTC_returnedBTCWalletEntryDTO() {
+    public void getSelectedAvailableCoin_selectedBTC_returnBTCWalletEntryDTO() {
         //given
         String coinSymbol = Coin.BTC.symbol;
         WalletEntryDTO expected = new WalletEntryDTO(
@@ -158,7 +158,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getSelectedWalletEntry_selectedADA_returnedADAWalletEntryDTO() {
+    public void getSelectedWalletEntry_selectedADA_returnADAWalletEntryDTO() {
         //given
         User authenticatedUser = initUser();
         List<WalletEntry> entries = initEntries(authenticatedUser);
@@ -178,7 +178,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void searchByCoinSymbol_symbolETH_returnedETHWalletEntryDTO() {
+    public void searchByCoinSymbol_symbolETH_returnETHWalletEntryDTO() {
         //given
         List<WalletEntryDTO> entries = initEntriesDTO();
         String coinSymbol = Coin.ETH.symbol;
@@ -194,7 +194,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void searchByCoinSymbol_symbolLTC_thrownNoSuchElementException() {
+    public void searchByCoinSymbol_symbolLTC_throwsNoSuchElementException() {
         //given
         List<WalletEntryDTO> entries = initEntriesDTO();
         String coinSymbol = Coin.LTC.symbol;
@@ -205,7 +205,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void deposit_userWithoutUsdtWalletEntry_fundsAddedToInternalAccount() {
+    public void deposit_userWithoutUsdtWalletEntry_fundsAddToInternalAccount() {
         //given
         User authenticatedUser = initUser();
         when(securityService.getAuthenticatedUser()).thenReturn(authenticatedUser);
@@ -224,7 +224,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void deposit_userWithUsdtWalletEntry_fundsAddedToInternalAccount() {
+    public void deposit_userWithUsdtWalletEntry_fundsAddToInternalAccount() {
         //given
         User authenticatedUser = initUser();
         WalletEntry usdtWalletEntry = new WalletEntryBuilder()
@@ -250,7 +250,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void deposit_userWithoutExternalFunds_thrownAmountGreaterThanAvailableException() {
+    public void deposit_userWithoutExternalFunds_throwsAmountGreaterThanAvailableException() {
         //given
         User authenticatedUser = initUser();
         authenticatedUser.setExternalFunds(BigDecimal.ZERO);
@@ -261,7 +261,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void withdraw_allParamsOk_fundsAddedToExternalAccount() {
+    public void withdraw_allParamsOk_fundsAddToExternalAccount() {
         //given
         User authenticatedUser = initUser();
         WalletEntry usdtWalletEntry = new WalletEntryBuilder()
@@ -286,7 +286,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void withdraw_userWithoutUsdtEntry_thrownAmountGreaterThanAvailableException() {
+    public void withdraw_userWithoutUsdtEntry_throwsAmountGreaterThanAvailableException() {
         //given
         User authenticatedUser = initUser();
         authenticatedUser.setExternalFunds(BigDecimal.ZERO);
@@ -334,7 +334,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getUserWalletEntry_allParamsOk_returnedWalletEntry() {
+    public void getUserWalletEntry_allParamsOk_returnWalletEntry() {
         //given
         User authenticatedUser = initUser();
         List<WalletEntry> entries = initEntries(authenticatedUser);
@@ -354,7 +354,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getUserWalletEntry_userWithoutWalletEntries_returnedWalletEntryWithZeroAmount() {
+    public void getUserWalletEntry_userWithoutWalletEntries_returnWalletEntryWithZeroAmount() {
         //given
         User authenticatedUser = initUser();
         when(securityService.getAuthenticatedUser()).thenReturn(authenticatedUser);
@@ -371,7 +371,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void getUserWalletEntry_userWithoutInvokedEntry_returnedWalletEntryWithZeroAmount() {
+    public void getUserWalletEntry_userWithoutInvokedEntry_returnWalletEntryWithZeroAmount() {
         //given
         User authenticatedUser = initUser();
         List<WalletEntry> entries = initEntries(authenticatedUser);
@@ -391,7 +391,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void validateAmount_amountSmallerThanAmountFrom_returnedTrue() {
+    public void validateAmount_amountSmallerThanAmountFrom_returnTrue() {
         //given
         BigDecimal amount = BigDecimal.valueOf(5);
         BigDecimal amountFrom = BigDecimal.valueOf(6);
@@ -400,7 +400,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void validateAmount_amountEqualToAmountFrom_returnedTrue() {
+    public void validateAmount_amountEqualToAmountFrom_returnTrue() {
         //given
         BigDecimal amount = BigDecimal.valueOf(5);
         BigDecimal amountFrom = BigDecimal.valueOf(5);
@@ -409,7 +409,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void validateAmount_amountGreaterThanAmountFrom_returnedFalse() {
+    public void validateAmount_amountGreaterThanAmountFrom_returnFalse() {
         //given
         BigDecimal amount = BigDecimal.valueOf(5);
         BigDecimal amountFrom = BigDecimal.valueOf(4);
@@ -418,7 +418,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void calculateTotalBalance_allParamsOk_returnedBalance() {
+    public void calculateTotalBalance_allParamsOk_returnBalance() {
         //given
         List<WalletEntryDTO> entries = List.of(
                 new WalletEntryDTO(Coin.BNB, BigDecimal.TEN, BigDecimal.valueOf(300)),
@@ -434,7 +434,7 @@ public class WalletEntryServiceTest {
     }
 
     @Test
-    public void calculateTotalBalance_entriesWithZeroAmount_returnedBalance() {
+    public void calculateTotalBalance_entriesWithZeroAmount_returnBalance() {
         //given
         List<WalletEntryDTO> entries = List.of(
                 new WalletEntryDTO(Coin.BNB, BigDecimal.ZERO, BigDecimal.valueOf(300)),

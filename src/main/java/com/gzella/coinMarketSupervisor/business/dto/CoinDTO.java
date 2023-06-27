@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CoinDTO {
-    public String symbol;
-    public String price;
+    private String symbol;
+    private String price;
 }

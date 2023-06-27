@@ -109,7 +109,7 @@ public class TransactionServiceTest {
     }
 
     @Test
-    public void getTransactions_allParamsOk_returnedTransactionDTOList() {
+    public void getTransactions_allParamsOk_returnTransactionDTOList() {
         //given
         User user = initUser();
         when(securityService.getAuthenticatedUser()).thenReturn(user);

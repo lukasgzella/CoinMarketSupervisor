@@ -62,7 +62,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void registerNewUser_tryingToRegisterExistingUser_thrownUserAlreadyExistsException() {
+    public void registerNewUser_tryingToRegisterExistingUser_throwsUserAlreadyExistsException() {
         //given
         User actual = new UserBuilder()
                 .setUsername("JohnDoe")
@@ -74,7 +74,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void getUserByUsername_allParamsOk_returnedUser() {
+    public void getUserByUsername_allParamsOk_returnUser() {
         //given
         String actualUserName = "JohnDoe";
         User expected = initUser();
@@ -87,7 +87,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void getUserByUsername_nonExistingUser_thrownNoSuchUserException() {
+    public void getUserByUsername_nonExistingUser_throwsNoSuchUserException() {
         //given
         String actualUserName = "JohnDoe";
         when(userRepository.findUserByUsername(actualUserName)).thenReturn(Optional.empty());

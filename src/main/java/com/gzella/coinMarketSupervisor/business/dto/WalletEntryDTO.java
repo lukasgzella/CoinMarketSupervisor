@@ -10,10 +10,10 @@ import java.math.RoundingMode;
 @EqualsAndHashCode
 @ToString
 public class WalletEntryDTO {
-    public Coin coin;
-    public BigDecimal amount;
-    public BigDecimal price;
-    public BigDecimal value;
+    private Coin coin;
+    private BigDecimal amount;
+    private BigDecimal price;
+    private BigDecimal value;
 
     public WalletEntryDTO(Coin coin, BigDecimal amount, BigDecimal price) {
         this.coin = coin;
