@@ -20,7 +20,7 @@ Languages, frameworks and external libraries used in project:
 
 Java 15, 
 Javascript, 
-HTML, 
+HTML,
 CSS, 
 Gradle, 
 Spring Data JPA, 
@@ -34,6 +34,23 @@ IOSocket,
 Java Discord Api,
 Binance Connector,
 Eclipse Jetty Websocket Server.
+
+Here is some screenshots while program is running:
+Login:
+![1](src/main/resources/screenshots/1.jpg)
+Home page:
+![2](src/main/resources/screenshots/2.jpg)
+![3](src/main/resources/screenshots/3.jpg)
+![4](src/main/resources/screenshots/4.jpg)
+![5](src/main/resources/screenshots/5.jpg)
+![6](src/main/resources/screenshots/6.jpg)
+![7](src/main/resources/screenshots/7.jpg)
+![8](src/main/resources/screenshots/8.jpg)
+![9](src/main/resources/screenshots/9.jpg)
+![10](src/main/resources/screenshots/10.jpg)
+![11](src/main/resources/screenshots/11.jpg)
+![12](src/main/resources/screenshots/12.jpg)
+![13](src/main/resources/screenshots/13.jpg)
 
 Currently I'm working on discord alerts. Application conects to Discord Bot (package utils.DiscordUtils,
 credentials are not visible for obvious reasons), but there is no user interface to set alerts.
